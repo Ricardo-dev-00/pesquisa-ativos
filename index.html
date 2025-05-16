@@ -22,22 +22,22 @@
         <section class="pesquisar">
             <h1>Pesquisar ativos</h1>
             <div class="form-pesquisar">
-                <form action="">
-                    <input type="text" placeholder="Digite o nome do ativo" required>
-                    <button class="btn pesquisar-ativo">Buscar</button>
+                <form onsubmit="buscarAtivo(event)">
+                    <input type="text" id="ativo" placeholder="Digite o nome do ativo" required>
+                    <button class="btn pesquisar-ativo" type="submit">Buscar</button>
                 </form>
             </div>
         </section>
         <section class="resultado-ativo">
-            <h2 id="resultado-nome">PETR4</h2>
+            <h2 id="resultado-nome"></h2>
             <p id="resultado-descricao">
-                PETROLEO BRASILEIRO S.A. PETROBRAS</p>
+            </p>
         </section>
         <section class="cotacao">
             <div class="cotacao-title">
                 <h3>Cotação</h3>
             </div>
-            <p id="cotacao-valor">R$ 31,96</p>
+            <p id="cotacao-valor"></p>
             <p id="cotacao-resultado">Acima do Preço justo</p>
         </section>
         <section class="indicadores">
@@ -45,42 +45,42 @@
                 <div class="indicadores-title">
                     <h3>VARIAÇÃO (12M)</h3>
                 </div>
-                <p id="indicador-variacao">-0,55%</p>
+                <p id="indicador-variacao"></p>
             </div>
             <div class="card indicadores">
                 <div class="indicadores-title">
                     <h3>P/L</h3>
                 </div>
 
-                <p id="indicador-p/l">8,54</p>
+                <p id="indicador-p/l"></p>
             </div>
             <div class="card indicadores">
                 <div class="indicadores-title">
                     <h3>P/VP</h3>
                 </div>
 
-                <p id="indicador-p/vp">1,04</p>
+                <p id="indicador-p/vp"></p>
             </div>
             <div class="card indicadores">
                 <div class="indicadores-title">
                     <h3>DY</h3>
                 </div>
 
-                <p id="indicador-dy">17,82%</p>
+                <p id="indicador-dy"></p>
             </div>
         </section>
         <section class="aviso">
             <p>
                 Esta ferramenta tem caráter exclusivamente informativo e educacional. Os dados apresentados não
                 constituem, em hipótese alguma, recomendação de investimento, sugestão de compra ou venda de ativos, ou
-                aconselhamento financeiro. Sempre consulte profissionais qualificados antes de tomar decisões de
-                investimento.
+                aconselhamento financeiro.
             </p>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 | Direitos reservados. Criado por Ricardo Vieira</p>
     </footer>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
