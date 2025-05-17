@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Rampart+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +24,8 @@ main {
     margin: 50px 0;
     font-size: 2.5rem;
     color: #333;
+    text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.15);
+
 }
 
 .form-pesquisar {
@@ -37,10 +41,11 @@ main {
     border-radius: 5px;
     font-size: 1rem;
     outline: none;
+    text-transform: uppercase;
 }
 
 .btn {
-    background-color: #000000;
+    background-color: #2639a5;
     color: #fff;
     padding: 15px 25px;
     border: none;
@@ -50,6 +55,7 @@ main {
 }
 
 .resultado-ativo {
+    height: 80px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -59,6 +65,65 @@ main {
 .resultado-ativo h2 {
     font-size: 2rem;
     color: #333;
+    font-family: "Rampart One", sans-serif;
+}
+
+.placeholder {
+    color: #888;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.placeholder i {
+    font-size: 3rem;
+    color: #2639a5;
+    text-shadow: 5px 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.looking-icon {
+    display: inline-block;
+    animation: infinity-move 4s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes infinity-move {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    12.5% {
+        transform: translate(10px, -10px);
+    }
+
+    25% {
+        transform: translate(20px, 0);
+    }
+
+    37.5% {
+        transform: translate(10px, 10px);
+    }
+
+    50% {
+        transform: translate(0, 0);
+    }
+
+    62.5% {
+        transform: translate(-10px, -10px);
+    }
+
+    75% {
+        transform: translate(-20px, 0);
+    }
+
+    87.5% {
+        transform: translate(-10px, 10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 .resultado-ativo p {
