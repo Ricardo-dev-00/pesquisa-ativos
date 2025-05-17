@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 body {
@@ -25,7 +26,6 @@ main {
     font-size: 2.5rem;
     color: #333;
     text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.15);
-
 }
 
 .form-pesquisar {
@@ -44,6 +44,18 @@ main {
     text-transform: uppercase;
 }
 
+.pesquisar input[type="text"]:focus {
+    border-color: #2639a565;
+    box-shadow: 0 0 5px rgba(38, 57, 165, 0.5);
+}
+
+input::placeholder {
+    color: rgba(156, 155, 155, 0.719);
+    /* Altere para a cor desejada */
+    opacity: 1;
+    /* Garante que a cor apareça com opacidade total */
+}
+
 .btn {
     background-color: #2639a5;
     color: #fff;
@@ -55,7 +67,7 @@ main {
 }
 
 .resultado-ativo {
-    height: 80px;
+    height: 110px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -70,7 +82,6 @@ main {
 
 .placeholder {
     color: #888;
-
     display: flex;
     align-items: center;
     gap: 8px;
@@ -78,7 +89,7 @@ main {
 
 .placeholder i {
     font-size: 3rem;
-    color: #2639a5;
+    color: #7c7c7cbd;
     text-shadow: 5px 2px 3px rgba(0, 0, 0, 0.15);
 }
 
@@ -130,6 +141,7 @@ main {
     font-size: 1rem;
     color: #666;
     margin: 10px 0;
+
 }
 
 .cotacao {

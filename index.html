@@ -24,7 +24,7 @@
             <h1>Pesquisar ativos</h1>
             <div class="form-pesquisar">
                 <form onsubmit="buscarAtivo(event)">
-                    <input type="text" id="ativo" placeholder="Digite o nome do ativo" required>
+                    <input type="text" id="ativo" placeholder="Ex: PETR4, VALE3, MXRF11" required>
                     <button class="btn pesquisar-ativo" type="submit">Buscar</button>
                 </form>
             </div>
@@ -33,8 +33,9 @@
             <h2 id="resultado-nome" class="placeholder">
                 <i class="fas fa-search looking-icon"></i>
             </h2>
-            <p id="resultado-descricao">
-            </p>
+            <p id="resultado-descricao"></p>
+            <p id="resultado-setor"></p>
+
         </section>
         <section class="cotacao">
             <div class="cotacao-title">
