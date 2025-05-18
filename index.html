@@ -28,6 +28,25 @@
                     <button class="btn pesquisar-ativo" type="submit">Buscar</button>
                 </form>
             </div>
+            <div id="recentes">
+                <h3>Últimos ativos pesquisados</h3>
+                <div id="lista-recentes">
+                    <span class="chip"></span>
+                    <span class="chip"></span>
+                    <span class="chip"></span>
+                    <span class="chip"></span>
+                    <span class="chip"></span>
+                </div>
+                <button class="limpar" onclick="limparHistorico()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 6px;">
+                        <path d="M5.5 5.5a.5.5 0 011 0v6a.5.5 0 01-1 0v-6zm3 0a.5.5 0 011 0v6a.5.5 0 01-1 0v-6z" />
+                        <path fill-rule="evenodd"
+                            d="M14.5 3a1 1 0 01-1 1h-11a1 1 0 010-2h3.11a1 1 0 01.978-.783h2.824a1 1 0 01.978.783H13.5a1 1 0 011 1zM4.118 4.5h7.764l-.35 8.365a1 1 0 01-.997.885H5.465a1 1 0 01-.997-.885L4.118 4.5z" />
+                    </svg>
+                    Limpar histórico
+                </button>
+            </div>
         </section>
         <section class="resultado-ativo">
             <h2 id="resultado-nome" class="placeholder">
@@ -35,11 +54,10 @@
             </h2>
             <p id="resultado-descricao"></p>
             <p id="resultado-setor"></p>
-
         </section>
         <section class="cotacao">
             <div class="cotacao-title">
-                <h3>Cotação</h3>
+                <h3>Cotação Atual</h3>
             </div>
             <p id="cotacao-valor"></p>
             <p id="cotacao-resultado">Acima do Preço justo</p>
@@ -74,11 +92,15 @@
             </div>
         </section>
         <section class="aviso">
-            <p>
-                Esta ferramenta tem caráter exclusivamente informativo e educacional. Os dados apresentados não
-                constituem, em hipótese alguma, recomendação de investimento, sugestão de compra ou venda de ativos, ou
-                aconselhamento financeiro.
-            </p>
+            <div
+                style="background-color: #fff3cd; color: #856404; padding: 16px; border: 1px solid #ffeeba; border-radius: 8px; display: flex; align-items: flex-start; gap: 12px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; max-width: 800px; margin: 16px auto;">
+                <span style="font-size: 20px; margin-top: 2px;">⚠️</span>
+                <p style="margin: 0;">
+                    <strong>Aviso:</strong> Esta ferramenta tem caráter exclusivamente informativo e educacional. Os
+                    dados apresentados não constituem, em hipótese alguma, recomendação de investimento, sugestão de
+                    compra ou venda de ativos, ou aconselhamento financeiro.
+                </p>
+            </div>
         </section>
     </main>
     <footer>
