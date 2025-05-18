@@ -8,6 +8,7 @@ async function buscarAtivo(event) {
     const setorEl = document.getElementById('resultado-setor');
     const cotacaoEl = document.getElementById('cotacao-valor');
     const cotacaoResultadoEl = document.getElementById('cotacao-resultado');
+    const lookingIcon = document.querySelector('.looking-icon');
 
     if (!ticker) {
         nomeEl.textContent = 'Digite um código de ativo.';
@@ -15,6 +16,7 @@ async function buscarAtivo(event) {
         setorEl.textContent = '';
         cotacaoEl.textContent = '';
         cotacaoResultadoEl.textContent = '';
+        lookingIcon.style.display = 'inline-block'; // mostra ícone se nada digitado
         return;
     }
 
@@ -33,6 +35,15 @@ async function buscarAtivo(event) {
             const ativo = data.results[0];
             const summary = ativo.summaryProfile || {};
 
+            // Logo do ativo
+            const logoEl = document.getElementById('resultado-logo');
+            if (ativo.logourl) {
+                logoEl.src = ativo.logourl;
+                logoEl.style.display = 'inline-block';
+            } else {
+                logoEl.style.display = 'none';
+            }
+
             nomeEl.textContent = ativo.symbol || '';
             setorEl.textContent = summary.sector ? `Setor: ${summary.sector}` : 'Setor não disponível';
 
@@ -46,7 +57,6 @@ async function buscarAtivo(event) {
 
             cotacaoResultadoEl.textContent = '';
 
-            // Salva o objeto completo no ultimaBusca
             const resultado = {
                 symbol: ativo.symbol,
                 price: ativo.regularMarketPrice,
@@ -54,20 +64,27 @@ async function buscarAtivo(event) {
                 website: summary.website,
                 displayName: ativo.symbol,
                 displaySetor: setorEl.textContent,
-                displayDescricao: descEl.innerHTML
+                displayDescricao: descEl.innerHTML,
+                logoUrl: ativo.logourl || ''
             };
 
             localStorage.setItem('ultimaBusca', JSON.stringify(resultado));
-            adicionarAoHistorico(ativo.symbol);  // só ticker no histórico
+            adicionarAoHistorico(ativo.symbol);
             renderizarHistorico();
             tickerInput.value = '';
 
+            lookingIcon.style.display = 'none'; // esconde ícone pois tem busca
         } else {
             nomeEl.textContent = 'Ativo não encontrado.';
             descEl.textContent = '';
             setorEl.textContent = '';
             cotacaoEl.textContent = '';
             cotacaoResultadoEl.textContent = '';
+
+            const logoEl = document.getElementById('resultado-logo');
+            logoEl.style.display = 'none';
+
+            lookingIcon.style.display = 'inline-block'; // mostra ícone pois não encontrou ativo
         }
     } catch (error) {
         console.error('Erro ao buscar ativo:', error);
@@ -76,6 +93,11 @@ async function buscarAtivo(event) {
         setorEl.textContent = '';
         cotacaoEl.textContent = '';
         cotacaoResultadoEl.textContent = '';
+
+        const logoEl = document.getElementById('resultado-logo');
+        logoEl.style.display = 'none';
+
+        lookingIcon.style.display = 'inline-block'; // mostra ícone em caso de erro
     }
 }
 
@@ -85,8 +107,8 @@ function adicionarAoHistorico(ticker) {
     historico = historico.filter(item => item.toUpperCase() !== ticker.toUpperCase());
     historico.unshift(ticker);
 
-    if (historico.length > 6) {
-        historico = historico.slice(0, 6);
+    if (historico.length > 8) {
+        historico = historico.slice(0, 8);
     }
 
     localStorage.setItem('historicoBusca', JSON.stringify(historico));
@@ -115,13 +137,23 @@ function limparHistorico() {
     renderizarHistorico();
 }
 
-// Ao carregar a página, renderiza histórico e carrega ultima busca
 window.addEventListener('DOMContentLoaded', () => {
     renderizarHistorico();
 
     const ultimaBusca = localStorage.getItem('ultimaBusca');
+    const lookingIcon = document.querySelector('.looking-icon');
+
     if (ultimaBusca) {
         const dados = JSON.parse(ultimaBusca);
+
+        const logoEl = document.getElementById('resultado-logo');
+        if (dados.logoUrl) {
+            logoEl.src = dados.logoUrl;
+            logoEl.style.display = 'inline-block';
+        } else {
+            logoEl.style.display = 'none';
+        }
+
         document.getElementById('resultado-nome').textContent = dados.displayName || '';
         document.getElementById('resultado-setor').textContent = dados.displaySetor || '';
         document.getElementById('resultado-descricao').innerHTML = dados.displayDescricao || '';
@@ -129,5 +161,9 @@ window.addEventListener('DOMContentLoaded', () => {
             ? `R$ ${dados.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
             : 'Cotação não disponível';
         document.getElementById('cotacao-resultado').textContent = '';
+
+        lookingIcon.style.display = 'none'; // já tem busca, esconde ícone
+    } else {
+        lookingIcon.style.display = 'inline-block'; // sem busca, mostra ícone
     }
 });

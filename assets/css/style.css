@@ -118,17 +118,17 @@ input::placeholder {
 }
 
 .resultado-ativo {
-    height: 120px;
+    height: 140px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.resultado-ativo h2 {
-    font-size: 2rem;
+#resultado-nome {
+    font-size: 1.3rem;
+    font-weight: bold;
     color: #333;
-    font-family: "Rampart One", sans-serif;
 }
 
 .placeholder {
@@ -138,7 +138,7 @@ input::placeholder {
     gap: 8px;
 }
 
-.placeholder i {
+.resultado-ativo i {
     font-size: 3rem;
     color: #7c7c7cbd;
     text-shadow: 5px 2px 3px rgba(0, 0, 0, 0.15);
@@ -253,7 +253,7 @@ input::placeholder {
 }
 
 .indicadores-title {
-    background-color: #000;
+    background-color: #333;
     width: 100%;
     height: 50px;
 }
